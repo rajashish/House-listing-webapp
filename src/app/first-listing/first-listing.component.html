@@ -1,0 +1,98 @@
+
+
+
+                <div class="panel panel-default">
+                  <div class="panel-body">
+            
+                        <div class="row">
+        
+            <div class="col-md-4">
+                <label for=search_type>Search by types</label>
+                <select class="form-control" name="stype" id="search_type"
+                [(ngModel)]="stype" (ngModelChange)="filter()" 
+                >
+                    <option 
+                    *ngFor="let fi of search_type" 
+                    [value]="fi">
+                    {{fi}}
+                    </option>
+                </select>
+            </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                    <div class="panel-body">
+              
+                          <div class="row">
+          
+              <div class="col-md-4">
+            
+                  <label for=search_type>Search by name</label>
+                 <input type="text" [(ngModel)]="sname">
+                 <button (click)="searchname()">
+                    search
+               </button>
+               <button (click)="resetname()">Reset</button>
+
+              </div>
+              </div>
+        
+
+   
+<div class ="row">
+    <div class="col-md-4">
+            <label for="sort-field">Sort By</label>
+            <select 
+              class="form-control" 
+              name="sort-field" 
+              id="sort-field" 
+              [(ngModel)]="sortField">
+              <option 
+                *ngFor="let field of sortFields" 
+                [value]="field">
+                  {{ utilService.capitalize(field) }}
+                </option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="sort-direction">Sort Direction</label>
+            <div>
+              
+              <button 
+                class="btn btn-primary"
+                [ngClass]="{'btn-success': sortDirection == 'asc'}"
+                (click)="sortDirection = 'asc'">
+                  Asc
+              </button>
+              &nbsp;
+  
+              <button
+                class="btn btn-primary"
+                [ngClass]="{'btn-success': sortDirection == 'desc'}"
+                (click)="sortDirection = 'desc'">
+                  Desc
+              </button>
+  
+            </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="row" style="display: flex">
+    <div *ngFor="let crib of cribs | sortBy: [sortField , sortDirection]" class="col-lg-4" >
+        
+        <app-crib-card [crib]="crib" [stype]="stype" ></app-crib-card>
+    
+
+    </div>
+
+</div>
+
+
+
+

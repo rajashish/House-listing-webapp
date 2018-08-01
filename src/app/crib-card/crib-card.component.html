@@ -1,0 +1,55 @@
+<div class="col-lg-12">
+  <div class="thumbnail">
+  <img src="assets/images/{{ crib.image }}.jpg">
+  <div class="caption">
+    <div *ngIf="!crib.ShowDetails">
+      <h4>
+        <span class="label label-primary">
+          {{crib.type}}
+        </span>
+      </h4>
+      <h3>
+       <i class="glyphicon glyphicon-tag"></i>
+          {{crib.price | currency:'INR':true}}
+     
+      </h3>
+      <h4>
+         
+            Name: {{crib.name}}
+        </h4>
+      <h4>
+        <i class="glyphicon glyphicon-home"></i>
+           {{crib.address}}
+      </h4>
+
+      <hr>
+      <button class="btn btn-md btn-success" *ngIf="!crib.ShowDetails" (click)="crib.ShowDetails = !crib.ShowDetails">Details</button>
+   
+    </div>
+
+
+    <div *ngIf="crib.ShowDetails">
+      <div class="details">
+      <h4> 
+        <span class="label label-primary">
+          Beds: {{crib.bedrooms}}
+        </span>
+
+        <span class="label label-primary" style="margin-left:5px" > 
+          Baths: {{crib.bathrooms}}
+        </span>
+        
+    
+        <span class="label label-primary" style="margin-left:5px" > 
+            SqFt : {{crib.area}}
+          </span>
+      </h4>
+      <p>{{crib.description}}</p>
+
+      <hr>
+      <button class="btn btn-md btn-danger" *ngIf="crib.ShowDetails" (click)="crib.ShowDetails = !crib.ShowDetails">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
